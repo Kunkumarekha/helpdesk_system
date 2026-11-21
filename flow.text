@@ -1,0 +1,149 @@
+START
+  ↓
+uvicorn main:app --reload
+  ↓
+http://127.0.0.1:8000/docs
+  ↓
+Register ADMIN
+  ↓
+Login ADMIN
+  ↓
+Authorize ADMIN
+  ↓
+Create ENGINEER
+  ↓
+Create CATEGORY
+  ↓
+Register USER
+  ↓
+Login USER
+  ↓
+Authorize USER
+  ↓
+Create TICKET
+  ↓
+GET TICKETS
+  ↓
+Login ADMIN
+  ↓
+Authorize ADMIN
+  ↓
+Assign ENGINEER
+  ↓
+Login ENGINEER
+  ↓
+Authorize ENGINEER
+  ↓
+IN_PROGRESS
+  ↓
+Add COMMENT
+  ↓
+Get COMMENTS
+  ↓
+WAITING_FOR_USER
+  ↓
+IN_PROGRESS
+  ↓
+RESOLVED
+  ↓
+CLOSED
+  ↓
+GET SLA
+  ↓
+GET NOTIFICATIONS
+  ↓
+MARK NOTIFICATION READ
+  ↓
+Login ADMIN
+  ↓
+GET AUDIT LOGS
+  ↓
+DONE ✅
+
+
+
+# project Flow
+
+| Purpose | Swagger path |
+|---|---|
+| Register | `POST /auth/register` |
+| Login | `POST /auth/login` |
+| Current user | `GET /auth/me` |
+| Create engineer | `POST /users` |
+| Create category | `POST /categories` |
+| Create ticket | `POST /tickets` |
+| View tickets | `GET /tickets` |
+| Assign engineer | `PATCH /tickets/{ticket_id}/assign` |
+| Change status | `PATCH /tickets/{ticket_id}/status` |
+| Add comment | `POST /tickets/{ticket_id}/comments` |
+| View comments | `GET /tickets/{ticket_id}/comments` |
+| Check SLA | `GET /tickets/{ticket_id}/sla` |
+| Notifications | `GET /notifications` |
+| Mark notification read | `PATCH /notifications/{notification_id}/read` |
+| Audit logs | `GET /audit-logs` |
+
+
+
+
+| Endpoint | USER | ENGINEER | ADMIN |
+|---|---:|---:|---:|
+| Create ticket | ✅ | ❌ | ✅ |
+| Assign engineer | ❌ | ❌ | ✅ |
+| Change status | ❌ | ✅ | ✅ |
+| Comments | ✅ | ✅ | ✅ |
+| Notifications | Own | Own | Own |
+| Audit logs | ❌ | ❌ | ✅ |
+
+
+
+Good morning, sir/madam.
+
+Today, I would like to explain my project, **Helpdesk – IT Support Ticketing System**.
+
+**Problem statement:**
+
+The main problem I wanted to solve was the difficulty of managing IT support requests in an organized way. When employees report technical issues through informal messages or emails, it can be difficult to track assignments, priorities and progress.
+
+**Objective:**
+
+My objective was to develop a centralized application where users can raise support tickets, administrators can assign them to engineers, and engineers can update the status until the issue is resolved.
+
+**Technology stack:**
+
+I used Python for application logic, FastAPI for developing REST APIs, SQLite for storing application data, Streamlit for the frontend, Uvicorn to run the backend, and Requests to connect the frontend with the backend.
+
+**Architecture:**
+
+The application follows a frontend-backend-database architecture. Streamlit provides the user interface, FastAPI handles the API requests and business logic, and SQLite stores the data. I separated authentication and database operations into separate Python modules to keep the code organized.
+
+**Main features:**
+
+The system supports user registration and login, password hashing, signed access tokens, role-based access control, ticket creation, ticket assignment, status updates, SLA tracking, comments, notifications and audit logs.
+
+There are three main roles: USER, ENGINEER and ADMIN. Users create tickets, admins assign them to engineers, and engineers work on their assigned tickets.
+
+I also implemented a defined ticket workflow to prevent invalid status transitions. SLA tracking uses different target times according to ticket priority.
+
+**Database:**
+
+I used SQLite to store users, tickets, categories and related information. Python's sqlite3 module handles database operations, and SQL queries retrieve and update records.
+
+**Challenges faced:**
+
+One of the challenges was understanding token-based authentication and correctly authorizing protected API requests. I also worked on connecting Streamlit with FastAPI and testing the application through Swagger UI.
+
+These challenges helped me improve my understanding of API integration, database operations and debugging.
+
+**Advantages:**
+
+The system provides centralized issue tracking, clearer responsibilities, priority management, controlled workflows and better visibility into ticket progress.
+
+**Future scope:**
+
+In the future, I would like to add email notifications, advanced analytics, automated testing, cloud deployment and AI-based ticket classification. I would also review the security configuration and consider PostgreSQL if the application needs to scale.
+
+**Conclusion:**
+
+This project helped me gain practical experience in backend development, REST APIs, SQL, authentication and frontend-backend integration. It also helped me understand how to develop and test a complete application.
+
+Thank you. I am happy to answer your questions.
